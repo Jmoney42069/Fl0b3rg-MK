@@ -1,8 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 const HEADER = `
   <table width="100%" cellpadding="0" cellspacing="0" style="background:#0F1B2D;padding:20px 0;margin-bottom:32px">
     <tr><td align="center">
@@ -69,6 +67,7 @@ export async function POST(request: NextRequest) {
   const fullName = `${voornaam} ${achternaam}`;
   const regioStr = (body.regio ?? []).join(", ") || "—";
   const makelaarEmail = process.env.MAKELAAR_EMAIL ?? "info@floberg.nl";
+  const resend = new Resend(process.env.RESEND_API_KEY);
 
   const makelaarHtml = `<!DOCTYPE html><html lang="nl"><head><meta charset="UTF-8"></head>
 <body style="margin:0;padding:0;background:#f4f4f4;font-family:Arial,sans-serif">

@@ -5,8 +5,6 @@ import {
   makelaarNotificationEmail,
 } from "@/lib/email-templates";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 interface BookingBody {
   name: string;
   email: string;
@@ -49,6 +47,7 @@ export async function POST(request: NextRequest) {
   }
 
   const makelaarEmail = process.env.MAKELAAR_EMAIL ?? "info@floberg.nl";
+  const resend = new Resend(process.env.RESEND_API_KEY);
 
   try {
     await Promise.all([
