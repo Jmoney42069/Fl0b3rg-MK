@@ -3,21 +3,40 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --color-primary: #1B2B4B;
+  --color-primary-light: #2D4470;
+  --color-accent: #C9A96E;
+  --color-accent-light: #E8D5A3;
+  --color-neutral-dark: #1A1A1A;
+  --color-neutral-mid: #6B7280;
+  --color-neutral-light: #F8F7F4;
+  --color-white: #FFFFFF;
+  --color-success: #16A34A;
+  --color-error: #DC2626;
+
+  --shadow-card: 0 2px 16px rgba(27, 43, 75, 0.08);
+  --shadow-card-hover: 0 8px 32px rgba(27, 43, 75, 0.16);
+  --shadow-gold: 0 0 0 2px rgba(201, 169, 110, 0.4);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  color: var(--color-neutral-dark);
+  background: var(--color-neutral-light);
+  font-family: var(--font-inter), sans-serif;
+}
+
+@layer components {
+  .section-padding {
+    @apply py-20 md:py-28;
+  }
+
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
 }
 
 @layer utilities {
@@ -25,3 +44,50 @@ body {
     text-wrap: balance;
   }
 }
+
+/* ─── Range input slider styling ──────────────────────────────── */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: pointer;
+}
+input[type="range"]::-webkit-slider-runnable-track {
+  height: 6px;
+  border-radius: 3px;
+  background: #E5E0D8;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #C9A84C;
+  margin-top: -7px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  transition: transform 0.1s ease;
+}
+input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+}
+input[type="range"]::-moz-range-track {
+  height: 6px;
+  border-radius: 3px;
+  background: #E5E0D8;
+  border: none;
+}
+input[type="range"]::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #C9A84C;
+  border: none;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+}
+input[type="range"]:focus-visible {
+  outline: none;
+}
+input[type="range"]:focus-visible::-webkit-slider-thumb {
+  box-shadow: 0 0 0 3px rgba(201, 168, 76, 0.4);
+}
+
